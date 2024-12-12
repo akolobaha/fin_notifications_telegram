@@ -19,7 +19,7 @@ type TargetUser struct {
 }
 
 func (tu *TargetUser) GenerateTelegramText() (text string) {
-	text = fmt.Sprintf("🏁 Цель %s по %s достигнута:\nцель - %f, последнее значение - %f",
+	text = fmt.Sprintf("🏁 Цель %s по %s достигнута:\nцель - %.2f, последнее значение - %.2f",
 		getRatioText(tu.Target.ValuationRatio),
 		tu.Target.Ticker,
 		tu.Target.Value,

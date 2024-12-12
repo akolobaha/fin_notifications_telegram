@@ -61,11 +61,11 @@ func ReadFromQueue(ctx context.Context, cfg *config.Config) error {
 			err = telegram.SendMessageToUser(cfg.TelegramToken, text, tgId)
 			if err != nil {
 				log.Error("Failed to send message: ", err)
-			}
-
-			// Подтверждение сообщения после успешной обработки
-			if err := msg.Ack(false); err != nil {
-				log.Error("Failed to ack message: %s", err)
+			} else {
+				// Подтверждение сообщения после успешной обработки
+				if err := msg.Ack(false); err != nil {
+					log.Error("Failed to ack message: %s", err)
+				}
 			}
 
 		case <-ctx.Done():
